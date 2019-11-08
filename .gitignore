@@ -63,3 +63,13 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+# Others
+/local.properties
+/.idea/modules.xml
+/.idea/navEditor.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
