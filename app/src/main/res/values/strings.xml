@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MyWeatherApplication</string>
+    <string name="app_name">MyWeather by VISEO</string>
+    <string name="app_title">myWeather Application</string>
+    <string name="homepage_city_hint">Search a city</string>
 </resources>
