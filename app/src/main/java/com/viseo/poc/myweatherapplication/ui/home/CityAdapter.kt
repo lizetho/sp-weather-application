@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.viseo.poc.myweatherapplication.R
+import com.viseo.poc.myweatherapplication.data.City
 
 /**
  * Adapter for the [RecyclerView] in [HomePageFragment].
@@ -16,7 +17,7 @@ class CityAdapter internal constructor(
     context: Context
 ) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var cities = emptyList<String>()
+    private var cities = emptyList<City>()
 
     inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cityItemView: TextView = itemView.findViewById(R.id.cityNameTextView)
@@ -29,10 +30,10 @@ class CityAdapter internal constructor(
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         val current = cities[position]
-        holder.cityItemView.text = current
+        holder.cityItemView.text = current.name
     }
 
-    fun setCities(cities: List<String>) {
+    fun setCities(cities: List<City>) {
         this.cities = cities
         notifyDataSetChanged()
     }

@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viseo.poc.myweatherapplication.R
+import com.viseo.poc.myweatherapplication.data.City
 import kotlinx.android.synthetic.main.home_page_fragment.*
 
 class HomePageFragment : Fragment() {
@@ -22,7 +23,10 @@ class HomePageFragment : Fragment() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var cityAdapter: CityAdapter
 
-    // Bloc lifecycle
+    // --------------------
+    // Lifecycle Bloc
+    // --------------------
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,13 +36,17 @@ class HomePageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initView()
-
-
-        // TODO When get the API result populate the RecyclerView with the results
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(HomePageViewModel::class.java)
+    }
+
+    // --------------------
+    // Business logic bloc
+    // --------------------
     private fun initView() {
         // Init recycler view
         context?.let {
@@ -54,26 +62,27 @@ class HomePageFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable) {}
 
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
             }
 
-            override fun onTextChanged(word: CharSequence, start: Int,
-                                       before: Int, count: Int) {
-                // TODO perform API call
-                viewModel.searchCity(word)
+            override fun onTextChanged(
+                word: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                context?.let {
+                    viewModel.searchCity(it, word.toString()) {
+                        populateCityList(it)
+                    }
+                }
             }
         })
 
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomePageViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-    fun populateCityList(cities: MutableList<String>) {
+    fun populateCityList(cities: MutableList<City>) {
         cityAdapter.setCities(cities)
     }
 }
