@@ -79,7 +79,6 @@ class HomePageFragment : Fragment() {
                 }
             }
         })
-
     }
 
     fun populateCityList(cities: MutableList<City>) {
