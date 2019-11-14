@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viseo.poc.myweatherapplication.R
 import com.viseo.poc.myweatherapplication.data.City
+import com.viseo.poc.myweatherapplication.ui.weather.WeatherFragment
+import com.viseo.poc.myweatherapplication.utils.addFragment
 import kotlinx.android.synthetic.main.home_page_fragment.*
 
 class HomePageFragment : Fragment() {
@@ -19,7 +21,7 @@ class HomePageFragment : Fragment() {
         fun newInstance() = HomePageFragment()
     }
 
-    private lateinit var viewModel: HomePageViewModel
+    private lateinit var viewModel: WeatherViewModel
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var cityAdapter: CityAdapter
 
@@ -41,7 +43,7 @@ class HomePageFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomePageViewModel::class.java)
+        viewModel = ViewModelProviders.of(activity!!).get(WeatherViewModel::class.java)
     }
 
     // --------------------
@@ -50,7 +52,7 @@ class HomePageFragment : Fragment() {
     private fun initView() {
         // Init recycler view
         context?.let {
-            cityAdapter = CityAdapter(it)
+            cityAdapter = CityAdapter(it) { cityItem: City -> onClickCityItem(cityItem) }
             cityResultRecyclerView.adapter = cityAdapter
             linearLayoutManager = LinearLayoutManager(context)
             cityResultRecyclerView.layoutManager = linearLayoutManager
@@ -79,6 +81,12 @@ class HomePageFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun onClickCityItem(cityItem: City) {
+        println("yes I click here $cityItem")
+        viewModel.setSelectedCity(cityItem)
+        activity?.addFragment(WeatherFragment(), R.id.container)
     }
 
     fun populateCityList(cities: MutableList<City>) {

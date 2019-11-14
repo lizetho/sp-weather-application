@@ -4,8 +4,8 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class HomePageViewModelTest {
-    val homePageViewModel = HomePageViewModel()
+class WeatherViewModelTest {
+    val homePageViewModel = WeatherViewModel()
 
     @Test
     fun isValidCityName_isValid() {

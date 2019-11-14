@@ -14,13 +14,17 @@ import com.viseo.poc.myweatherapplication.data.City
  * Adapter for the [RecyclerView] in [HomePageFragment].
  */
 class CityAdapter internal constructor(
-    context: Context
+    context: Context, val clickListener: (City) -> Unit
 ) : RecyclerView.Adapter<CityAdapter.CityViewHolder>() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var cities = emptyList<City>()
 
     inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cityItemView: TextView = itemView.findViewById(R.id.cityNameTextView)
+        fun bind(city: City, clickListener: (City) -> Unit) {
+            cityItemView.text = city.name
+            itemView.setOnClickListener { clickListener(city) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
@@ -29,8 +33,7 @@ class CityAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
-        val current = cities[position]
-        holder.cityItemView.text = current.name
+        holder.bind(cities[position], clickListener)
     }
 
     fun setCities(cities: List<City>) {

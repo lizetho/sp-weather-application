@@ -8,9 +8,17 @@
     <dimen name="margin_l">20dp</dimen>
     <dimen name="margin_xl">24dp</dimen>
 
-
-    <dimen name="item_height">40dp</dimen>
+    <!-- Text -->
     <dimen name="main_app_title_text">32sp</dimen>
+    <dimen name="city_title_text">32sp</dimen>
+    <dimen name="city_weather_temperature_text">50sp</dimen>
+    <dimen name="city_weather_humidity_text">26sp</dimen>
+
+    <!-- Recycler view item -->
+    <dimen name="item_height">40dp</dimen>
     <dimen name="city_item_min_height">40dp</dimen>
+
+    <!-- Weather page -->
+    <dimen name="city_weather_icon_size">150dp</dimen>
 
 </resources>
