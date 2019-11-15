@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viseo.poc.myweatherapplication.R
 import com.viseo.poc.myweatherapplication.data.City
+import com.viseo.poc.myweatherapplication.ui.viewmodel.WeatherViewModel
 import com.viseo.poc.myweatherapplication.ui.weather.WeatherFragment
 import com.viseo.poc.myweatherapplication.utils.addFragment
 import kotlinx.android.synthetic.main.home_page_fragment.*

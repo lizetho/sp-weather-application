@@ -1,4 +1,4 @@
-package com.viseo.poc.myweatherapplication.ui.home
+package com.viseo.poc.myweatherapplication.ui.viewmodel
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
@@ -26,6 +26,14 @@ class WeatherViewModel : ViewModel() {
         if (isValidCityName(cityName)) {
             DataManager(context).getCities(cityName, completionHandler)
         }
+    }
+
+    fun searchCityWeather(
+        context: Context,
+        city: City,
+        completionHandler: (response: City?, error: String?) -> Unit
+    ) {
+        DataManager(context).getCityWeather(city, completionHandler)
     }
 
     @VisibleForTesting

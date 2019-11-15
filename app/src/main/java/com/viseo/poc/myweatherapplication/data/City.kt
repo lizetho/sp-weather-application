@@ -4,6 +4,7 @@ data class City(
     val cityId: String,
     val name: String,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    var weather: CityWeather?
 ) {
 }
