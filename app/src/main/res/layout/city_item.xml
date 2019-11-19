@@ -14,8 +14,8 @@
 
     <ImageView
         android:id="@+id/cityNameImage"
-        android:layout_width="@dimen/histotyIconSize"
-        android:layout_height="@dimen/histotyIconSize"
+        android:layout_width="@dimen/history_icon_size"
+        android:layout_height="@dimen/history_icon_size"
         android:layout_marginStart="@dimen/margin_m"
         android:src="@android:drawable/ic_menu_recent_history"
         android:tint="@color/darkGray"

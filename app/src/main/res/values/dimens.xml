@@ -10,9 +10,10 @@
 
     <!-- Text -->
     <dimen name="main_app_title_text">32sp</dimen>
-    <dimen name="city_title_text">32sp</dimen>
+    <dimen name="toolbar_title_text">18sp</dimen>
     <dimen name="city_weather_temperature_text">50sp</dimen>
-    <dimen name="city_weather_humidity_text">26sp</dimen>
+    <dimen name="city_weather_humidity_text">24sp</dimen>
+    <dimen name="city_weather_description">16sp</dimen>
     <dimen name="city_list_section_text">14sp</dimen>
 
     <!-- Recycler view item -->
@@ -20,7 +21,7 @@
     <dimen name="city_item_min_height">40dp</dimen>
 
     <!-- Weather page -->
-    <dimen name="city_weather_icon_size">150dp</dimen>
-    <dimen name="histotyIconSize">20dp</dimen>
+    <dimen name="city_weather_icon_size">100dp</dimen>
+    <dimen name="history_icon_size">20dp</dimen>
 
 </resources>

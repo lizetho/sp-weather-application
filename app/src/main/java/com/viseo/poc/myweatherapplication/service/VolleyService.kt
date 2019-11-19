@@ -15,7 +15,7 @@ class VolleyService constructor(context: Context) {
 
         fun getInstance(context: Context) =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?: VolleyService(context).also {
+                INSTANCE ?: VolleyService(context.applicationContext).also {
                     INSTANCE = it
                 }
             }
@@ -32,6 +32,7 @@ class VolleyService constructor(context: Context) {
     }
 
     val imageLoader: ImageLoader by lazy {
+        requestQueue.start()
         ImageLoader(requestQueue,
             object : ImageLoader.ImageCache {
                 private val cache = LruCache<String, Bitmap>(20)

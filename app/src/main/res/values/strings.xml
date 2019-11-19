@@ -10,4 +10,8 @@
     <!-- Weather page-->
     <string name="city_weather_humidity">Humidity:\n%s</string>
     <string name="city_weather_temperature">%s°C</string>
+
+
+    <string name="error_message_title">Error loading data</string>
+    <string name="error_message">An error has occurred. Please try again later.</string>
 </resources>

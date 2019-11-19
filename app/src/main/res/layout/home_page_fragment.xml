@@ -8,6 +8,13 @@
     android:padding="@dimen/margin_m"
     tools:context=".ui.home.HomePageFragment">
 
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/sampleImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/appTitleTextView"
         style="@style/TextTitle"
