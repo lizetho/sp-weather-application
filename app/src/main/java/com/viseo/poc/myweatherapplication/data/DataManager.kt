@@ -109,13 +109,10 @@ class DataManager(context: Context) {
                 while (index < cities.length()) {
                     val cityJsonObj = cities.getJSONObject(index)
                     cityList.add(
-                        City(
-                            index.toString(),
-                            cityJsonObj.getJSONArray("areaName").getJSONObject(0)
+                        City(cityJsonObj.getJSONArray("areaName").getJSONObject(0)
                                 .getString("value"),
                             cityJsonObj.getDouble("latitude"),
-                            cityJsonObj.getDouble("longitude"),
-                            null
+                            cityJsonObj.getDouble("longitude")
                         )
                     )
                     index++

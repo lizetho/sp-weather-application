@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.viseo.poc.myweatherapplication.R
 import com.viseo.poc.myweatherapplication.data.City
 import com.viseo.poc.myweatherapplication.ui.viewmodel.WeatherViewModel
@@ -30,8 +30,8 @@ class WeatherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
-        viewModel = ViewModelProviders.of(activity!!).get(WeatherViewModel::class.java)
-        viewModel.selectedCity.observe(this,
+        viewModel = ViewModelProvider(activity!!).get(WeatherViewModel::class.java)
+        viewModel.selectedCity.observe(viewLifecycleOwner,
             Observer<City> { city ->
                 println("Got the city in the second fragment $city")
                 cityWeatherCityNameText.text = city!!.name

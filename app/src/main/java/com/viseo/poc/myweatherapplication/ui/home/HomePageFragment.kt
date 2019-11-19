@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.viseo.poc.myweatherapplication.R
 import com.viseo.poc.myweatherapplication.data.City
@@ -44,12 +45,14 @@ class HomePageFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(activity!!).get(WeatherViewModel::class.java)
+        viewModel = ViewModelProvider(activity!!).get(WeatherViewModel::class.java)
+        populateCityHistory()
     }
 
     // --------------------
     // Business logic bloc
     // --------------------
+
     private fun initView() {
         // Init recycler view
         context?.let {
@@ -84,9 +87,22 @@ class HomePageFragment : Fragment() {
         })
     }
 
+
+    private fun populateCityHistory() {
+        viewModel.cityHistory.observe(viewLifecycleOwner, Observer { cities ->
+            cities?.let {
+                cityAdapter.setCities(
+                    getString(R.string.homepage_history_title),
+                    cities
+                )
+            }
+        })
+
+    }
+
     private fun onClickCityItem(cityItem: City) {
-        println("yes I click here $cityItem")
         viewModel.setSelectedCity(cityItem)
+        viewModel.insertCityOnDB(cityItem)
         activity?.addFragment(WeatherFragment(), R.id.container)
     }
 

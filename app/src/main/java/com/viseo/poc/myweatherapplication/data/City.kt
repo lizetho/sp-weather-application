@@ -1,10 +1,19 @@
 package com.viseo.poc.myweatherapplication.data
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "city")
 data class City(
-    val cityId: String,
-    val name: String,
-    val latitude: Double,
-    val longitude: Double,
-    var weather: CityWeather?
+    var name: String?,
+    var latitude: Double?,
+    var longitude: Double?
 ) {
+    @PrimaryKey(autoGenerate = true)
+    var cityId: Int = 0
+    @Ignore
+    var weather: CityWeather? = null
+
+
 }
