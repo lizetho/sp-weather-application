@@ -5,5 +5,6 @@
     <color name="colorAccent">#00ade9</color>
     <color name="colorBackground">#FEFEFE</color>
     <color name="itemBackground">#FFFFFF</color>
+    <color name="cityListSectionText">@color/colorPrimaryDark</color>
 
 </resources>

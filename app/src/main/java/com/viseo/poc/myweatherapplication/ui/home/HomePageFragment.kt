@@ -91,6 +91,6 @@ class HomePageFragment : Fragment() {
     }
 
     fun populateCityList(cities: MutableList<City>) {
-        cityAdapter.setCities(cities)
+        cityAdapter.setCities(getString(R.string.homepage_results_title), cities)
     }
 }

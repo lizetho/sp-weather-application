@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">MyWeather by VISEO</string>
+    <!-- CIty page-->
     <string name="app_title">myWeather Application</string>
     <string name="homepage_city_hint">Search a city</string>
+    <string name="homepage_results_title">Results</string>
+    <string name="homepage_history_title">Recent Search</string>
+
+
+    <!-- Weather page-->
     <string name="city_weather_humidity">Humidity:\n%s</string>
     <string name="city_weather_temperature">%s°C</string>
 </resources>

@@ -13,4 +13,10 @@
         <item name="android:textSize">@dimen/city_title_text</item>
     </style>
 
+    <style name="CityListSectionTitle">
+        <item name="android:textColor">@color/cityListSectionText</item>
+        <item name="android:textSize">@dimen/city_list_section_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>
