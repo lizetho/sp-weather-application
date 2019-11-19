@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "city")
 data class City(
-    var name: String?,
-    var latitude: Double?,
-    var longitude: Double?,
+    var name: String,
+    var latitude: Double,
+    var longitude: Double,
     var inHistory: Boolean = false
 ) {
     @PrimaryKey(autoGenerate = true)
@@ -16,5 +16,5 @@ data class City(
     @Ignore
     var weather: CityWeather? = null
 
-
+    override fun toString(): String = name
 }

@@ -60,4 +60,16 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
     fun isValidCityName(cityName: String): Boolean {
         return cityName.isNotEmpty() && cityName.matches(Regex("^[a-zA-Z .-]*$"))
     }
+
+
+    /**
+     * Return the filtered list of Cities without duplication and only the last 10.
+     */
+    fun filterCityHistory(cities: List<City>): List<City> {
+        var cityHistory = cities.distinctBy { it.name }
+        if (cityHistory.size > 10) {
+            cityHistory = cityHistory.subList(0, 10)
+        }
+        return cityHistory
+    }
 }

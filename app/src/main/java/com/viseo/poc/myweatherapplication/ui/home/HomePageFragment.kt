@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -95,11 +96,7 @@ class HomePageFragment : Fragment() {
      */
     private fun displayHistory(cities: List<City>?) {
         cities.let {
-            //If there is nothing in the search show history
-            var cityHistory = it!!.distinctBy { it.name }
-            if (cityHistory.size > 10) {
-                cityHistory = cityHistory.subList(0, 10)
-            }
+            val cityHistory = viewModel.filterCityHistory(it!!)
             cityAdapter.setCities(
                 getString(R.string.homepage_history_title),
                 cityHistory
@@ -122,6 +119,7 @@ class HomePageFragment : Fragment() {
         activity?.addFragment(WeatherFragment(), R.id.container)
     }
 
+    @VisibleForTesting
     fun populateCityList(cities: MutableList<City>) {
         // In case of not result omit empty list
         if (cities.isNotEmpty()) {

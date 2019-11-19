@@ -1,5 +1,6 @@
 package com.viseo.poc.myweatherapplication.data
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -17,6 +18,11 @@ interface CityDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(city: City)
 
+    @VisibleForTesting
     @Query("DELETE FROM city")
     suspend fun deleteAll()
+
+    @VisibleForTesting
+    @Query("SELECT * from city")
+    fun getAll(): List<City>
 }
