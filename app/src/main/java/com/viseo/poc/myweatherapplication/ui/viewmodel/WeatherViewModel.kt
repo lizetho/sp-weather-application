@@ -16,7 +16,14 @@ import kotlinx.coroutines.launch
 class WeatherViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: CityRepository
+    private val _selectedCity = MutableLiveData<City>()
     val cityHistory: LiveData<List<City>>
+    val selectedCity: LiveData<City>
+        get() = _selectedCity
+
+    fun setSelectedCity(city: City) {
+        _selectedCity.postValue(city)
+    }
 
     init {
         // Gets reference to Dao to build the Repository.
@@ -25,18 +32,8 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         cityHistory = repository.cityHistory
     }
 
-
     fun insertCityOnDB(city: City) = viewModelScope.launch {
         repository.insert(city)
-    }
-
-
-    private val _selectedCity = MutableLiveData<City>()
-    val selectedCity: LiveData<City>
-        get() = _selectedCity
-
-    fun setSelectedCity(city: City) {
-        _selectedCity.postValue(city)
     }
 
     fun searchCity(
@@ -57,9 +54,10 @@ class WeatherViewModel(application: Application) : AndroidViewModel(application)
         DataManager(context).getCityWeather(city, completionHandler)
     }
 
+    // business logic bloc:
+
     @VisibleForTesting
     fun isValidCityName(cityName: String): Boolean {
-        // TODO handle case of string with special characters.
         return cityName.isNotEmpty() && cityName.matches(Regex("^[a-zA-Z .-]*$"))
     }
 }

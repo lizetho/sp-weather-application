@@ -5,11 +5,15 @@ import android.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
 
+/**
+ * Unexpected error using Kotlin version of BitmapLruCache.
+ * Using Java version instead
+ * https://stackoverflow.com/questions/19209114/volley-image-bitmap-is-null/19428501#19428501
+ */
 public class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoader.ImageCache {
-    public static int getDefaultLruCacheSize() {
+    private static int getDefaultLruCacheSize() {
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         final int cacheSize = maxMemory / 8;
-
         return cacheSize;
     }
 
@@ -17,7 +21,7 @@ public class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoa
         this(getDefaultLruCacheSize());
     }
 
-    public BitmapLruCache(int sizeInKiloBytes) {
+    private BitmapLruCache(int sizeInKiloBytes) {
         super(sizeInKiloBytes);
     }
 
