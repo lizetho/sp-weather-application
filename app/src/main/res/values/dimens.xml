@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <dimen name="margin_xxs">5dp</dimen>
+    <dimen name="margin_xs">8dp</dimen>
+    <dimen name="margin_s">10dp</dimen>
+    <dimen name="margin_m">16dp</dimen>
+    <dimen name="margin_l">20dp</dimen>
+    <dimen name="margin_xl">24dp</dimen>
+
+    <!-- Text -->
+    <dimen name="main_app_title_text">32sp</dimen>
+    <dimen name="toolbar_title_text">18sp</dimen>
+    <dimen name="city_weather_temperature_text">50sp</dimen>
+    <dimen name="city_weather_humidity_text">24sp</dimen>
+    <dimen name="city_weather_description">16sp</dimen>
+    <dimen name="city_list_section_text">14sp</dimen>
+
+    <!-- Recycler view item -->
+    <dimen name="item_height">40dp</dimen>
+    <dimen name="city_item_min_height">40dp</dimen>
+
+    <!-- Weather page -->
+    <dimen name="city_weather_icon_size">100dp</dimen>
+    <dimen name="history_icon_size">20dp</dimen>
+
+</resources>

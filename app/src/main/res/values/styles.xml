@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <style name="ToolbarTitle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/toolbar_title_text</item>
+    </style>
+
+
+    <style name="TextTitle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/main_app_title_text</item>
+    </style>
+
+    <style name="CityListSectionTitle">
+        <item name="android:textColor">@color/cityListSectionText</item>
+        <item name="android:textSize">@dimen/city_list_section_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
+</resources>

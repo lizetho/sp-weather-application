@@ -1,4 +1,4 @@
-# sp-weather-application
+# SP Weather Application
  Take-Home-Test pack for Mobile Developer. This application has been developed at VISEO
  SP Weather application is use to see the current Weather for selected City.
 
