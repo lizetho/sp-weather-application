@@ -9,9 +9,9 @@ import androidx.room.Query
 @Dao
 interface CityDao {
     /**
-     * According to UC #4 Get the last 10 items
+     * According to UC #4 Get the last items
      */
-    @Query("SELECT * from city ORDER BY cityId desc limit 10")
+    @Query("SELECT * from city ORDER BY cityId desc")
     fun getCityHistory(): LiveData<List<City>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

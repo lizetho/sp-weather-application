@@ -80,12 +80,7 @@ class HomePageFragment : Fragment() {
             ) {
                 context?.let {
                     if (word.isEmpty()) {
-                        viewModel.cityHistory.value.let {
-                            cityAdapter.setCities(
-                                getString(R.string.homepage_history_title),
-                                viewModel.cityHistory.value!!
-                            )
-                        }
+                        displayHistory(viewModel.cityHistory.value)
                     }
                     viewModel.searchCity(it, word.toString()) {
                         populateCityList(it)
@@ -95,20 +90,30 @@ class HomePageFragment : Fragment() {
         })
     }
 
+    /**
+     * Display the list of last 10 cities
+     */
+    private fun displayHistory(cities: List<City>?) {
+        cities.let {
+            //If there is nothing in the search show history
+            var cityHistory = it!!.distinctBy { it.name }
+            if (cityHistory.size > 10) {
+                cityHistory = cityHistory.subList(0, 10)
+            }
+            cityAdapter.setCities(
+                getString(R.string.homepage_history_title),
+                cityHistory
+            )
+        }
+    }
+
 
     private fun populateCityHistory() {
         viewModel.cityHistory.observe(viewLifecycleOwner, Observer { cities ->
-            cities?.let {
-                //If there is nothing in the search show history
-                if (citySearchEditText.text.isEmpty()) {
-                    cityAdapter.setCities(
-                        getString(R.string.homepage_history_title),
-                        cities
-                    )
-                }
+            if (citySearchEditText.text.isEmpty()) {
+                displayHistory(cities)
             }
         })
-
     }
 
     private fun onClickCityItem(cityItem: City) {
@@ -118,6 +123,9 @@ class HomePageFragment : Fragment() {
     }
 
     fun populateCityList(cities: MutableList<City>) {
-        cityAdapter.setCities(getString(R.string.homepage_results_title), cities)
+        // In case of not result omit empty list
+        if (cities.isNotEmpty()) {
+            cityAdapter.setCities(getString(R.string.homepage_results_title), cities)
+        }
     }
 }
