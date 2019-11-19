@@ -79,6 +79,14 @@ class HomePageFragment : Fragment() {
                 before: Int, count: Int
             ) {
                 context?.let {
+                    if (word.isEmpty()) {
+                        viewModel.cityHistory.value.let {
+                            cityAdapter.setCities(
+                                getString(R.string.homepage_history_title),
+                                viewModel.cityHistory.value!!
+                            )
+                        }
+                    }
                     viewModel.searchCity(it, word.toString()) {
                         populateCityList(it)
                     }
@@ -91,10 +99,13 @@ class HomePageFragment : Fragment() {
     private fun populateCityHistory() {
         viewModel.cityHistory.observe(viewLifecycleOwner, Observer { cities ->
             cities?.let {
-                cityAdapter.setCities(
-                    getString(R.string.homepage_history_title),
-                    cities
-                )
+                //If there is nothing in the search show history
+                if (citySearchEditText.text.isEmpty()) {
+                    cityAdapter.setCities(
+                        getString(R.string.homepage_history_title),
+                        cities
+                    )
+                }
             }
         })
 

@@ -22,7 +22,6 @@ class DataManager(context: Context) {
                 completionHandler(computeCityResponse(response))
             },
             Response.ErrorListener {
-                println("Ay Dios mio!")
                 //Empty list in case no answer or error.
                 completionHandler(mutableListOf())
             })
@@ -109,8 +108,8 @@ class DataManager(context: Context) {
                 while (index < cities.length()) {
                     val cityJsonObj = cities.getJSONObject(index)
                     cityList.add(
-                        City(cityJsonObj.getJSONArray("areaName").getJSONObject(0)
-                                .getString("value"),
+                        City(
+                            buildCityName(cityJsonObj),
                             cityJsonObj.getDouble("latitude"),
                             cityJsonObj.getDouble("longitude")
                         )
@@ -127,5 +126,22 @@ class DataManager(context: Context) {
             //Callback. Empty list in case no answer or error.
             return cityList
         }
+    }
+
+    /**
+     * Create the city name by joining city + region + country.
+     * If no region then displayed name is = "City, Country"
+     */
+    private fun buildCityName(cityJsonObj: JSONObject): String {
+        val region = cityJsonObj.getJSONArray("region").getJSONObject(0)
+            .getString("value")
+        val regionStr = if (region.isEmpty()) {
+            ""
+        } else {
+            ", $region"
+        }
+        return "${cityJsonObj.getJSONArray("areaName").getJSONObject(0)
+            .getString("value")}$regionStr, ${cityJsonObj.getJSONArray("country").getJSONObject(0)
+            .getString("value")}"
     }
 }

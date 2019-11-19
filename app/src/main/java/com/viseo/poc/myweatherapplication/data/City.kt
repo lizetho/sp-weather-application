@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class City(
     var name: String?,
     var latitude: Double?,
-    var longitude: Double?
+    var longitude: Double?,
+    var inHistory: Boolean = false
 ) {
     @PrimaryKey(autoGenerate = true)
     var cityId: Int = 0

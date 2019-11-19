@@ -21,5 +21,6 @@
 
     <!-- Weather page -->
     <dimen name="city_weather_icon_size">150dp</dimen>
+    <dimen name="histotyIconSize">20dp</dimen>
 
 </resources>

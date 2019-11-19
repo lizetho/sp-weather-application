@@ -8,6 +8,8 @@ class CityRepository(private val cityDao: CityDao) {
 
     // This insertion is going to be called for a coroutine
     suspend fun insert(city: City) {
+        // Change status of the city before insertion into DB
+        city.inHistory = true
         cityDao.insert(city)
     }
 }

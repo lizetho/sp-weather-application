@@ -1,5 +1,6 @@
 package com.viseo.poc.myweatherapplication.data
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -18,17 +19,17 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context, scope: CoroutineScope): AppDatabase =
+        fun getDatabase(application: Application, scope: CoroutineScope): AppDatabase =
             INSTANCE ?: synchronized(this) {
-                val instance = buildDatabase(context, scope)
+                val instance = buildDatabase(application, scope)
                 INSTANCE = instance
                 // return instance
                 instance
             }
 
-        private fun buildDatabase(context: Context, scope: CoroutineScope): AppDatabase {
+        private fun buildDatabase(application: Application, scope: CoroutineScope): AppDatabase {
             return Room.databaseBuilder(
-                context.applicationContext,
+                application,
                 AppDatabase::class.java,
                 DATABASE_NAME
             ).build()

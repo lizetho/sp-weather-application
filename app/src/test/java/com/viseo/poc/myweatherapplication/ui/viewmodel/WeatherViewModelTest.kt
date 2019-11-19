@@ -1,12 +1,24 @@
 package com.viseo.poc.myweatherapplication.ui.viewmodel
 
+import android.app.Application
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 
 class WeatherViewModelTest {
-    private val weatherViewModel =
-        WeatherViewModel()
+    @Mock
+    private val mockApplication: Application? = null
+    private lateinit var weatherViewModel: WeatherViewModel
+
+
+    @Before
+    fun setUp() {
+        MockitoAnnotations.initMocks(this)
+        weatherViewModel = mockApplication?.let { WeatherViewModel(it) }!!
+    }
 
     @Test
     fun isValidCityName_isValid() {

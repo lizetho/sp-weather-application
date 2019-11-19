@@ -12,12 +12,27 @@
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintWidth_percent="0.82">
 
+    <ImageView
+        android:id="@+id/cityNameImage"
+        android:layout_width="@dimen/histotyIconSize"
+        android:layout_height="@dimen/histotyIconSize"
+        android:layout_marginStart="@dimen/margin_m"
+        android:src="@android:drawable/ic_menu_recent_history"
+        android:tint="@color/darkGray"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/cityNameTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/cityNameTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:padding="@dimen/margin_m"
-        tools:text="Taumatawhakatangi­hangakoauauotamatea­turipukakapikimaunga­horonukupokaiwhen­uakitanatahu, New Zealand" />
+        app:layout_constraintLeft_toRightOf="@id/cityNameImage"
+        tools:text="Taumatawhakatangi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

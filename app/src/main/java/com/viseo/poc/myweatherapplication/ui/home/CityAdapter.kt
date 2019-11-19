@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.viseo.poc.myweatherapplication.R
@@ -29,8 +30,15 @@ class CityAdapter internal constructor(
 
     inner class CityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val cityItemView: TextView = itemView.findViewById(R.id.cityNameTextView)
+        private val cityNameImage: ImageView = itemView.findViewById(R.id.cityNameImage)
         fun bind(city: City, clickListener: (City) -> Unit) {
             cityItemView.text = city.name
+            if (city.inHistory) {
+                cityNameImage.visibility = View.VISIBLE
+            } else {
+                cityNameImage.visibility = View.GONE
+            }
+
             itemView.setOnClickListener { clickListener(city) }
         }
     }
