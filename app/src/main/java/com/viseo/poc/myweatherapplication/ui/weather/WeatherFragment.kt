@@ -13,8 +13,8 @@ import com.android.volley.toolbox.ImageLoader
 import com.viseo.poc.myweatherapplication.R
 import com.viseo.poc.myweatherapplication.data.City
 import com.viseo.poc.myweatherapplication.service.VolleyService
-import com.viseo.poc.myweatherapplication.utils.BitmapLruCache
 import com.viseo.poc.myweatherapplication.ui.viewmodel.WeatherViewModel
+import com.viseo.poc.myweatherapplication.utils.BitmapLruCache
 import com.viseo.poc.myweatherapplication.utils.removeFragment
 import kotlinx.android.synthetic.main.weather_fragment.*
 

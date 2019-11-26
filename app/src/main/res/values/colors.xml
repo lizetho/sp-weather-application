@@ -6,7 +6,6 @@
     <color name="colorBackground">#FEFEFE</color>
     <color name="itemBackground">#FFFFFF</color>
     <color name="cityListSectionText">@color/colorPrimaryDark</color>
-    <color name="lightGray">#BBBBBB</color>
     <color name="darkGray">#4B4B4B</color>
 
 </resources>

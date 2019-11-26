@@ -28,7 +28,6 @@ class DataManager(context: Context) {
             })
 
         VolleyService.getInstance(context).addToRequestQueue(request)
-        VolleyService.getInstance(context).requestQueue.start()
     }
 
     fun getCityWeather(city: City, completionHandler: (response: City?, error: String?) -> Unit) {
@@ -54,7 +53,6 @@ class DataManager(context: Context) {
             })
 
         VolleyService.getInstance(context).addToRequestQueue(request)
-        VolleyService.getInstance(context).requestQueue.start()
     }
 
     /**
