@@ -11,18 +11,18 @@ import com.android.volley.toolbox.ImageLoader;
  * https://stackoverflow.com/questions/19209114/volley-image-bitmap-is-null/19428501#19428501
  */
 public class BitmapLruCache extends LruCache<String, Bitmap> implements ImageLoader.ImageCache {
-    private static int getDefaultLruCacheSize() {
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-        final int cacheSize = maxMemory / 8;
-        return cacheSize;
-    }
-
     public BitmapLruCache() {
         this(getDefaultLruCacheSize());
     }
 
     private BitmapLruCache(int sizeInKiloBytes) {
         super(sizeInKiloBytes);
+    }
+
+    private static int getDefaultLruCacheSize() {
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        final int cacheSize = maxMemory / 8;
+        return cacheSize;
     }
 
     @Override
