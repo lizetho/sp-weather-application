@@ -1,6 +1,7 @@
 package com.viseo.poc.myweatherapplication.data
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -36,17 +37,15 @@ class DataManager(context: Context) {
             Response.Listener<JSONObject> { response ->
                 val cityResponse = computeWeatherResponse(city, response)
                 if (cityResponse.weather != null) {
-                    //TODO  get weather image
-
                     // Display Weather information
                     completionHandler(cityResponse, null)
                 } else {
-                    println("WARNING: Something it's wrong with the parsing")
+                    Log.d("WEATHER", "WARNING: Something it's wrong with the parsing")
                     completionHandler(null, "Cannot parse the city weather")
                 }
             },
             Response.ErrorListener {
-                println("Ay Dios mio!")
+                Log.e("WEATHER", "Volley Error: ", it)
                 //Empty list in case no answer or error.
                 completionHandler(
                     null,
@@ -86,10 +85,10 @@ class DataManager(context: Context) {
                 city.weather = cityWeather
 
             } else {
-                println("The request doesn't have any answer")
+                Log.d("WEATHER", "The request doesn't have any answer")
             }
         } catch (ex: JSONException) {
-            println("The request doesn't have any answer")
+            Log.d("WEATHER", "Error parsing the answer")
         } finally {
             //Callback. Empty list in case no answer or error.
             return city
@@ -116,12 +115,12 @@ class DataManager(context: Context) {
                     )
                     index++
                 }
-                println(cityList)
+                Log.d("WEATHER", "CityList: ${cityList}")
             } else {
-                println("The request doesn't have any answer")
+                Log.d("WEATHER", "The request doesn't have any answer")
             }
         } catch (ex: JSONException) {
-            println("The request doesn't have any answer")
+            Log.d("WEATHER", "Error parsing the answer")
         } finally {
             //Callback. Empty list in case no answer or error.
             return cityList
